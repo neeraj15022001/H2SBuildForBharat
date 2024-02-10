@@ -1,8 +1,12 @@
 "use client";
 import React, { useCallback, useState } from "react";
-import JSONEditorReact from "./JSONReactEditor";
 import type { Content, OnChangeStatus } from "vanilla-jsoneditor";
 import { uploadSchema } from "@/service/updateSchema";
+import dynamic from "next/dynamic";
+
+const JSONEditorReact = dynamic(() => import("./JSONReactEditor"), {
+  ssr: false,
+});
 
 const initialContent = {
   name: "xyz",
